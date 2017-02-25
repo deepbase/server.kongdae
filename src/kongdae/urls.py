@@ -1,10 +1,22 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
 from django.contrib import admin
+from musics.views import MusicsViewSet, api_root
+from rest_framework.urlpatterns import format_suffix_patterns
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'kongdae.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+musics_list = MusicsViewSet.as_view({
+    'get': 'list',
+    'post': 'create'                                    
+})
 
-    url(r'^admin/', include(admin.site.urls)),
-)
+musics_detail = MusicsViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+urlpatterns = format_suffix_patterns([
+    url(r'^$', api_root),
+    url(r'^musics/$', musics_list, name='music-list'),
+    url(r'^musics/(?P<pk>[0-9]+)/$', musics_detail, name='music-detail')
+])
