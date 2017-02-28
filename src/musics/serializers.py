@@ -9,4 +9,4 @@ from rest_framework import serializers
 class MusicSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Music
-        fields = ('numberOfGradings','sumOfGrades','composer','name','genre','compositionYear')
+        fields = ('numberOfGradings','sumOfGrades','composer','name','genre', 'instrument','compositionYear')
