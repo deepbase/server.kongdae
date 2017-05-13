@@ -16,5 +16,8 @@ class Music(models.Model):
     composer = models.CharField(choices=COMPOSERS, max_length=50)
     name = models.CharField(max_length=50)
     genre = models.CharField(choices=GENRES, max_length=20)
-    instrument = models.CharField(choices=INSTRUMENTS, max_length=20)
+    instrument = models.CharField(choices=INSTRUMENTS, max_length=20, null=True)
     compositionYear = models.IntegerField(blank=True, null=True)
+    
+    def __unicode__(self):
+        return self.name
