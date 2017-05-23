@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'musics',
+    'users',
 )
 
 TEMPLATES = [
@@ -119,3 +120,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+# Auth
+AUTH_PROFILE_MODULE = "users.UserInfo"
