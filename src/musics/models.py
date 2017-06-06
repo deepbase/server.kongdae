@@ -1,9 +1,12 @@
 from __future__ import unicode_literals
 
 from django.db import models
+
 from musics.data.Composer import getComposers
 from musics.data.Genre import getGenres
 from musics.data.Instrument import getInstruments
+from reviews.models import Review, StarRate
+
 
 COMPOSERS = [(item, getComposers()[item][1]) for item in getComposers()]
 GENRES = [(item, getGenres()[item][1]) for item in getGenres()]
@@ -21,3 +24,12 @@ class Music(models.Model):
     
     def __unicode__(self):
         return self.name
+
+class MusicReview(Review):
+    music = models.ForeignKey(Music)
+    
+class MusicStarRate(StarRate):
+    music = models.ForeignKey(Music)
+    
+    def __unicode__(self):
+        return Music.objects.get(pk=self.music_id).title

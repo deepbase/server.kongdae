@@ -22,8 +22,6 @@ SECRET_KEY = 'm_j+o-1gbp8juasf^qbrng8wxhyug*hli^woc#4_as+0pg3=m2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
  
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = [u'192.168.200.112',
                  u'localhost',
                  u'kongnamul.pythonanywhere.com'
@@ -46,6 +44,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'musics',
     'users',
+    'reviews',
 )
 
 TEMPLATES = [
@@ -66,6 +65,7 @@ TEMPLATES = [
             'django.template.loaders.app_directories.Loader',
             ]),
         ],
+        'debug': DEBUG,
     },
 }]
 
