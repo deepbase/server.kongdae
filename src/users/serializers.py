@@ -6,8 +6,11 @@ Created on 2017. 2. 25.
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-class UserSerializer(serializers.ModelSerializer):
+from reviews.models import Review
 
+class UserSerializer(serializers.ModelSerializer):
+    reviews = serializers.PrimaryKeyRelatedField(many=True, queryset=Review.objects.all())
+    
     class Meta:
         model = User
-        fields = ('id', 'username')
+        fields = ('id', 'username', 'reviews')

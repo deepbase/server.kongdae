@@ -1,5 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
+from kongdae.permissions import IsOwnerOrReadOnly
 from reviews.models import Review
 from reviews.serializers import ReviewSerializer
 
@@ -7,3 +8,5 @@ from reviews.serializers import ReviewSerializer
 class ReviewsViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)

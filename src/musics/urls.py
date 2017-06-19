@@ -5,7 +5,7 @@ from musics.views import MusicsViewSet, MusicReviewsViewSet, MusicReviewViewSet
 
 musics = MusicsViewSet.as_view({
     'get': 'list',
-    'post': 'create'                                    
+    'post': 'create'
 })
 
 music = MusicsViewSet.as_view({
