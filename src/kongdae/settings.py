@@ -21,7 +21,7 @@ SECRET_KEY = 'm_j+o-1gbp8juasf^qbrng8wxhyug*hli^woc#4_as+0pg3=m2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
- 
+
 ALLOWED_HOSTS = [u'192.168.200.112',
                  u'localhost',
                  u'kongnamul.pythonanywhere.com'
@@ -89,14 +89,14 @@ WSGI_APPLICATION = 'kongdae.wsgi.application'
 
 DATABASES = {
     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'kongnamul$default',
-#         'USER': 'kongnamul',
-#         'PASSWORD': 'bizadmin',
-#         'HOST': 'kongnamul.mysql.pythonanywhere-services.com',
-#         'PORT': '3306',
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kongnamul$default',
+        'USER': 'kongnamul',
+        'PASSWORD': 'bizadmin',
+        'HOST': 'kongnamul.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
