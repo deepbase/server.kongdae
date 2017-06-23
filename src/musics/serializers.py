@@ -9,7 +9,7 @@ from rest_framework import serializers
 class MusicSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Music
-        fields = ('id','numberOfGradings','sumOfGrades','composer','name', 'koreanName', 'genre', 'instrument','compositionYear')
+        fields = ('id','composer','name', 'koreanName', 'genre', 'instrument','compositionYear')
         
 class MusicReviewSerializer(serializers.ModelSerializer):
     class Meta:
