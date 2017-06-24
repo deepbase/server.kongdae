@@ -5,5 +5,5 @@ from django.db import models
 class UserInfo(models.Model):
     user = models.OneToOneField(User, unique=True)
     
-    def __unicode__(self):
+    def __str__(self):
         return User.objects.get(pk=self.user_id).name

@@ -21,7 +21,7 @@ class Music(models.Model):
     instrument = models.CharField(choices=INSTRUMENTS, max_length=20, null=True)
     compositionYear = models.IntegerField(blank=True, null=True)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class MusicReview(Review):
@@ -30,5 +30,5 @@ class MusicReview(Review):
 class MusicStarRate(StarRate):
     music = models.ForeignKey(Music)
     
-    def __unicode__(self):
+    def __str__(self):
         return Music.objects.get(pk=self.music_id).title

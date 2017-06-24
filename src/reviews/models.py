@@ -19,7 +19,7 @@ class Review(models.Model):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.title
     
 class StarRate(models.Model):
@@ -32,5 +32,5 @@ class Like(models.Model):
     user = models.ForeignKey(User)
     registeredDateTime = models.DateTimeField(auto_now_add=True)
     
-    def __unicode__(self):
+    def __str__(self):
         return Review.objects.get(pk=self.review_id).title
