@@ -11,7 +11,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 class IsStaffOrReadOnly(permissions.BasePermission):
     
     def has_permission(self, request, view):
-        if request.method == 'POST':
+        if request.method == 'POST' or request.method == 'PUT':
             return request.user and request.user.is_staff
         
         if request.method in permissions.SAFE_METHODS:
