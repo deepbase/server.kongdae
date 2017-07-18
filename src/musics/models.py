@@ -30,7 +30,10 @@ class Music(models.Model):
     compositionYear = models.IntegerField(blank=True, null=True)
     imageUrl = models.CharField(max_length=100, default=IMG_ROOT_PATH)
     
-    def __str__(self):
+    def __str__(self): # for python 3.x
+        return self.name
+    
+    def __unicode__(self): # for python 2.7
         return self.name
     
     def getComposer(self):
@@ -42,7 +45,10 @@ class MusicReview(Review):
 class MusicStarRate(StarRate):
     music = models.ForeignKey(Music)
     
-    def __str__(self):
-        return Music.objects.get(pk=self.music_id).title    
+    def __str__(self): # for python 3.x
+        return Music.objects.get(pk=self.music_id).title
+    
+    def __unicode__(self): # for python 2.7
+       return Music.objects.get(pk=self.music_id).title
     
     
