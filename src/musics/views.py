@@ -10,6 +10,22 @@ class MusicsViewSet(viewsets.ModelViewSet):
     queryset = Music.objects.all()
     permission_classes = (IsStaffOrReadOnly,)
     
+    def get_queryset(self):
+        queryset = Music.objects.all()
+        composerParam = self.request.query_params.get('composer', None)
+        compositionYearParam = self.request.query_params.get('compositionYear', None)
+        genreParam = self.request.query_params.get('genre', None)
+        instrumentParam = self.request.query_params.get('instrument', None)
+        if composerParam is not None:
+            queryset = queryset.filter(composer=composerParam)
+        if compositionYearParam is not None:
+            queryset = queryset.filter(compositionYear=compositionYearParam)
+        if genreParam is not None:
+            queryset = queryset.filter(genre=genreParam)
+        if instrumentParam is not None:
+            queryset = queryset.filter(instrument=instrumentParam)
+        return queryset
+    
 class MusicReviewViewSet(viewsets.ModelViewSet):
     serializer_class = MusicReviewSerializer
     queryset = MusicReview.objects.all()
