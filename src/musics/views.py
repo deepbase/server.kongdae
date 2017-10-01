@@ -4,11 +4,6 @@ from kongdae.permissions import IsOwnerOrReadOnly, IsStaffOrReadOnly
 from musics.models import Music, MusicReview
 from musics.serializers import MusicSerializer, MusicReviewSerializer
 
-# @api_view(['GET'])
-# def api_root(request, format=None):
-#     return Response({
-#         'musics': reverse('music-list', request=request, format=format)
-#     })
 # Create your views here.
 class MusicsViewSet(viewsets.ModelViewSet):
     serializer_class = MusicSerializer
