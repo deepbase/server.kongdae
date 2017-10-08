@@ -46,9 +46,9 @@ class MusicStarRate(StarRate):
     music = models.ForeignKey(Music)
     
     def __str__(self): # for python 3.x
-        return Music.objects.get(pk=self.music_id).title
+        return Music.objects.get(pk=self.music_id).name + "(" + str(self.rate) + ")"
     
     def __unicode__(self): # for python 2.7
-       return Music.objects.get(pk=self.music_id).title
+        return Music.objects.get(pk=self.music_id).name + "(" + str(self.rate) + ")"
     
     

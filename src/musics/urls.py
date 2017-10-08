@@ -16,7 +16,8 @@ music = MusicsViewSet.as_view({
 })
 
 musicReviews = MusicReviewsViewSet.as_view({
-    'get': 'list'
+    'get': 'list',
+    'post': 'create'
 })
 
 allMusicReviews = MusicReviewViewSet.as_view({

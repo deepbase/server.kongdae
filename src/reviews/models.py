@@ -15,6 +15,7 @@ class Review(models.Model):
     content = models.CharField(max_length=1000)
     images = models.ImageField
     likeUsers = models.ManyToManyField(User, blank=True, related_name='likeUsers', through='Like')
+    commentUsers = models.ManyToManyField(User, blank=True, related_name='commentUsers', through='Comment')
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -22,9 +23,12 @@ class Review(models.Model):
     def __str__(self):
         return self.title
     
+    def __unicode__(self): # for python 2.7
+        return self.title
+    
 class StarRate(models.Model):
     user = models.ForeignKey(User)
-    rate = models.IntegerField
+    rate = models.IntegerField(blank=True, null=True)
     
 # Mediator
 class Like(models.Model):
@@ -33,4 +37,19 @@ class Like(models.Model):
     registeredDateTime = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
+        return Review.objects.get(pk=self.review_id).title
+    
+    def __unicode__(self):
+        return Review.objects.get(pk=self.review_id).title
+    
+class Comment(models.Model):
+    review = models.ForeignKey(Review)
+    user = models.ForeignKey(User)
+    content = models.CharField(max_length=200)
+    registeredDateTime = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return Review.objects.get(pk=self.review_id).title
+    
+    def __unicode__(self):
         return Review.objects.get(pk=self.review_id).title
