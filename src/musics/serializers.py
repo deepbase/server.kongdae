@@ -14,4 +14,4 @@ class MusicSerializer(serializers.HyperlinkedModelSerializer):
 class MusicReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = MusicReview
-        fields = ('id','user','music','type','registeredDateTime','updatedDateTime','title','content', 'likeUsers')
+        fields = ('id','user','music','type','registeredDateTime','updatedDateTime','title','content', 'likeUsers', 'commentUsers')
