@@ -8,6 +8,7 @@ APPS = [('musics', 'musics'), ('musicians', 'musicians'), ('concerts', 'concerts
 # Create your models here.
 class Review(models.Model):
     user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    userNickname = models.CharField(max_length=50)
     type = models.CharField(choices=APPS, max_length=10, null=True)
     registeredDateTime = models.DateTimeField(auto_now_add=True)
     updatedDateTime = models.DateTimeField(auto_now=True)
