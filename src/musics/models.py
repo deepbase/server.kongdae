@@ -8,7 +8,6 @@ from musics.data.Genre import getGenres
 from musics.data.Instrument import getInstruments
 from reviews.models import Review, StarRate
 
-
 COMPOSERS = [(item, getComposers()[item][1]) for item in getComposers()]
 GENRES = [(item, getGenres()[item][1]) for item in getGenres()]
 INSTRUMENTS = [(item, getInstruments()[item][1]) for item in getInstruments()]

@@ -3,12 +3,13 @@ from rest_framework import viewsets, permissions
 from kongdae.permissions import IsOwnerOrReadOnly, IsStaffOrReadOnly
 from musics.models import Music, MusicReview
 from musics.serializers import MusicSerializer, MusicReviewSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class MusicsViewSet(viewsets.ModelViewSet):
     serializer_class = MusicSerializer
     queryset = Music.objects.all()
-    permission_classes = (IsStaffOrReadOnly,)
+    permission_classes = (IsAuthenticated, IsStaffOrReadOnly,)
     
     def get_queryset(self):
         queryset = Music.objects.all()

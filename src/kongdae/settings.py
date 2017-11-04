@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'm_j+o-1gbp8juasf^qbrng8wxhyug*hli^woc#4_as+0pg3=m2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+# TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = [u'192.168.200.112',
                  u'localhost',
@@ -44,6 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
     'musics',
     'users',
     'reviews',
@@ -72,6 +74,7 @@ TEMPLATES = [
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,10 +83,17 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'kongdae.urls'
 
 WSGI_APPLICATION = 'kongdae.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -96,8 +106,8 @@ DATABASES = {
         'PASSWORD': 'bizadmin',
         'HOST': 'kongnamul.mysql.pythonanywhere-services.com',
         'PORT': '3306',
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
